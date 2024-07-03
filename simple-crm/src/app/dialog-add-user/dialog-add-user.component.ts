@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { ExampleHeader } from '../example-header/example-header.component';
+import { User } from '../../models/user.class';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -26,13 +27,19 @@ import { ExampleHeader } from '../example-header/example-header.component';
     MatDialogClose,
     MatInputModule,
     MatDatepickerModule,
-    ExampleHeader
+    ExampleHeader,
   ],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss',
   providers: [provideNativeDateAdapter()],
 })
 export class DialogAddUserComponent {
+  user = new User();
+  birthDate: Date = new Date();
   onNoClick() {}
+  saveUser() {
+    this.user.birthDate = this.birthDate.getTime();
+    console.log(this.user);
+  }
   exampleHeader = ExampleHeader;
 }
