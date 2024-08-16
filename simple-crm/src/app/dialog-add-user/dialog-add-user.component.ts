@@ -4,6 +4,7 @@ import {
   MatDialogContent,
   MatDialogActions,
   MatDialogClose,
+  MatDialogRef,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +14,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { ExampleHeader } from '../example-header/example-header.component';
 import { User } from '../../models/user.class';
+import { addDoc, collection, Firestore } from '@angular/fire/firestore';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatCardModule} from '@angular/material/card';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -28,18 +33,37 @@ import { User } from '../../models/user.class';
     MatInputModule,
     MatDatepickerModule,
     ExampleHeader,
+    MatProgressBarModule,
+    CommonModule,
+    MatCardModule
   ],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss',
   providers: [provideNativeDateAdapter()],
 })
 export class DialogAddUserComponent {
-  user = new User();
+  user: User = new User();
   birthDate: Date = new Date();
+  loading = false;
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, private firestore: Firestore){
+  }
   onNoClick() {}
   saveUser() {
     this.user.birthDate = this.birthDate.getTime();
     console.log(this.user);
+    this.loading = true;
+    const userCollection = collection(this.firestore, 'user');
+    addDoc(userCollection, this.user.toJSON())
+      .then((docRef) => {
+        console.log('User added with ID:', docRef.id);
+        this.user.id = docRef.id; // Optionally store the ID in your user object
+        this.loading = false;
+        this.dialogRef.close();
+      })
+      .catch((error: any) => {
+        console.error('Error adding user: ', error);
+      });
   }
+  
   exampleHeader = ExampleHeader;
 }

@@ -3,35 +3,46 @@ import { Router, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { initializeApp } from 'firebase/app';
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  Firestore,
-} from 'firebase/firestore/lite';
+// import { initializeApp } from 'firebase/app';
+// import { getFirestore } from 'firebase/firestore';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { environment } from '../environments/environment';
+
+
+
+
+
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule],
+  imports: [RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'simple-crm';
+  firestore: Firestore = inject(Firestore);
+  items$: Observable<any[]>;
 
   constructor(private router: Router) {
-    const firebaseConfig = {
-      apiKey: 'AIzaSyBtdpKP8KQpyQ15K8StzNo5Gly2NxrWFys',
-      authDomain: 'simple-crm-23a6e.firebaseapp.com',
-      projectId: 'simple-crm-23a6e',
-      storageBucket: 'simple-crm-23a6e.appspot.com',
-      messagingSenderId: '657982237885',
-      appId: '1:657982237885:web:f990e8265f489175c75bd4',
-    };
+    const firebaseConfig = environment.firebase;
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    const aCollection = collection(this.firestore, 'items')
+    this.items$ = collectionData(aCollection);
+    
+    // const app = initializeApp(firebaseConfig);
+    // const db = getFirestore(app);
+
+    // // Get a list of cities from your database 
+    // async function getCities(db: Firestore) {
+    //   const citiesCol = collection(db, 'cities');
+    //   const citySnapshot = await getDocs(citiesCol);
+    //   const cityList = citySnapshot.docs.map((doc) => doc.data());
+    //   return cityList;
+    // }
   }
 
   navigateTo(path: string) {

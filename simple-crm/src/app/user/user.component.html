@@ -1,3 +1,24 @@
-<button (click)="openDialog()" class="add_user_btn" mat-fab color="primary"  matTooltip="Add user" >
+<mat-card appearance="outlined">
+    <mat-card-content>
+        <table class="user_table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr (click)="getUserById(this.user.id)" *ngFor="let user of userList">
+                  <td>{{ user.firstName }} {{ user.lastName }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.city }}</td>
+                </tr>
+              </tbody>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+<button (click)="openDialog()" class="add_user_btn" mat-fab color="primary" matTooltip="Add user">
     <mat-icon>add</mat-icon>
 </button>
