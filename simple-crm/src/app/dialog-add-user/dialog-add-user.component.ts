@@ -65,13 +65,10 @@ export class DialogAddUserComponent {
       .then((docRef) => {
         console.log('User added with ID:', docRef.id);
         this.user.id = docRef.id;
-        const userDoc = doc(this.firestore, 'user', docRef.id);
-        return updateDoc(userDoc, { id: docRef.id });
-      })
-      .then(() => {
-        console.log('User updated with ID:', this.user.id);
         this.loading = false;
         this.dialogRef.close();
+        const userDoc = doc(this.firestore, 'user', docRef.id);
+        return updateDoc(userDoc, { id: docRef.id });
       })
       .catch((error: any) => {
         console.error('Error adding or updating user: ', error);
