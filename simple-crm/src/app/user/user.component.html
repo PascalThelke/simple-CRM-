@@ -9,7 +9,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr (click)="getUserById(this.user.id)" *ngFor="let user of userList">
+                <tr [routerLink]="['/user/' + user.id ]" (click)="getUserById(user.id)" *ngFor="let user of userList">
                   <td>{{ user.firstName }} {{ user.lastName }}</td>
                   <td>{{ user.email }}</td>
                   <td>{{ user.city }}</td>

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -10,15 +10,17 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { environment } from '../environments/environment';
 
-
-
-
-
-
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule, CommonModule],
+  imports: [
+    RouterOutlet,
+    RouterModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    CommonModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -29,14 +31,12 @@ export class AppComponent {
 
   constructor(private router: Router) {
     const firebaseConfig = environment.firebase;
-
-    const aCollection = collection(this.firestore, 'items')
+    const aCollection = collection(this.firestore, 'items');
     this.items$ = collectionData(aCollection);
-    
     // const app = initializeApp(firebaseConfig);
     // const db = getFirestore(app);
 
-    // // Get a list of cities from your database 
+    // // Get a list of cities from your database
     // async function getCities(db: Firestore) {
     //   const citiesCol = collection(db, 'cities');
     //   const citySnapshot = await getDocs(citiesCol);
