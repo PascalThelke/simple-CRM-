@@ -5,14 +5,14 @@ import { UserComponent } from './user/user.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 
 export const routes: Routes = [
-    {path: '', component: DashboardComponent},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'user', component: UserComponent},
-    {path: 'user/:id', component: UserDetailsComponent},
+  { path: '', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'user/:id', component: UserDetailsComponent },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-  })
-  export class AppRoutingModule { }
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}

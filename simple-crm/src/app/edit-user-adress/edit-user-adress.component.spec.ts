@@ -8,10 +8,9 @@ describe('EditUserAdressComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditUserAdressComponent]
-    })
-    .compileComponents();
-    
+      imports: [EditUserAdressComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(EditUserAdressComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

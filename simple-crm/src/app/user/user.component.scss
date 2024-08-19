@@ -1,39 +1,37 @@
-
-.add_user_btn{
-    position: absolute;
-    right: 56px;
-    bottom: 56px
+.add_user_btn {
+  position: absolute;
+  right: 56px;
+  bottom: 56px;
 }
 
-.user_table{
-    width: 100%;
-    border-collapse: collapse;
-    thead{
-        border-bottom: solid 1px rgba(0, 0, 0, 0.2);
-        th{
-            color: rgba(0, 0, 0, 0.4);
-            font-weight: 600;
-            font-size: 16px;
-            text-align: start;
-        }
+.user_table {
+  width: 100%;
+  border-collapse: collapse;
+  thead {
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+    th {
+      color: rgba(0, 0, 0, 0.4);
+      font-weight: 600;
+      font-size: 16px;
+      text-align: start;
     }
-    tbody{
-        tr{
-            border-bottom: solid 1px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            &:hover{
-                background-color: rgba(0, 0, 0, 0.04);
-            }
-            &:last-child{
-                border-bottom: 0px;
-            }
-            td{
-                height: 40px;
-                // &:first-child{
-                //     padding-left: 16px;
-                // }
-            }
-        }    
+  }
+  tbody {
+    tr {
+      border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+      &:last-child {
+        border-bottom: 0px;
+      }
+      td {
+        height: 40px;
+        // &:first-child{
+        //     padding-left: 16px;
+        // }
+      }
     }
-    
+  }
 }

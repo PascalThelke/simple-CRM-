@@ -6,10 +6,15 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from '../../models/user.class';
 import { MatCardModule } from '@angular/material/card';
-import { Firestore, collection, getDocs, doc, getDoc } from '@angular/fire/firestore';
+import {
+  Firestore,
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+} from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
 
 @Component({
   selector: 'app-user',
@@ -21,7 +26,7 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     MatCardModule,
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],

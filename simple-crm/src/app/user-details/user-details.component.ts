@@ -47,11 +47,13 @@ export class UserDetailsComponent implements OnInit {
       }
     });
   }
- 
-  editUserInfo(){
-    this.dialog.open(EditUserInfoComponent);
+
+  editUserInfo() {
+    const dialog = this.dialog.open(EditUserInfoComponent);
+    dialog.componentInstance.user = this.user;
   }
   editUserAdress() {
-    this.dialog.open(EditUserAdressComponent);
+    const dialog = this.dialog.open(EditUserAdressComponent);
+    dialog.componentInstance.user = this.user;
   }
 }

@@ -51,6 +51,7 @@ export class DialogAddUserComponent {
   user: User = new User();
   birthDate: Date = new Date();
   loading = false;
+  exampleHeader = ExampleHeader;
   constructor(
     public dialogRef: MatDialogRef<DialogAddUserComponent>,
     private firestore: Firestore
@@ -75,5 +76,5 @@ export class DialogAddUserComponent {
       });
   }
 
-  exampleHeader = ExampleHeader;
+
 }
