@@ -1,6 +1,47 @@
-<mat-card appearance='raised'>
+<mat-card *ngIf="user" class="profile_header" appearance='raised'>
+    <button class="menu_button_upperleft" [matMenuTriggerFor]="profileMenu" mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+        <mat-menu #profileMenu="matMenu">
+            <button mat-menu-item (click)="editUserInfo()">
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+            </button>
+            <button mat-menu-item disabled>
+                <mat-icon>placeholder</mat-icon>
+                <span>placeholder</span>
+            </button>
+        </mat-menu>
+    </button>
     <mat-card-content>
-
+        <img src="/assets/img/profile_picture.png" alt="">
+        <div>
+            <mat-card-title>{{ user.firstName }} {{ user.lastName }}</mat-card-title>
+            <span>{{ user.email }}</span>
+        </div>
     </mat-card-content>
-
 </mat-card>
+<mat-card *ngIf="user" class="mt_16" appearance="outlined">
+    <button class="menu_button_upperleft" [matMenuTriggerFor]="adressMenu" mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+        <mat-menu #adressMenu="matMenu">
+            <button mat-menu-item (click)="editUserAdress()">
+                <mat-icon>edit</mat-icon>
+                <span>Edit</span>
+            </button>
+            <button mat-menu-item disabled>
+                <mat-icon>placeholder</mat-icon>
+                <span>placeholder</span>
+            </button>
+        </mat-menu>
+    </button>
+    <mat-card-header>
+        <mat-card-title>Address </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        {{ user.street }} <br>
+        {{ user.postalCode }} {{ user.city }}
+    </mat-card-content>
+</mat-card>
+<div *ngIf="!user">
+    <p>Loading...</p>
+</div>
