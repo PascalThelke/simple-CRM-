@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserAdressComponent } from '../edit-user-adress/edit-user-adress.component';
 import { EditUserInfoComponent } from '../edit-user-info/edit-user-info.component';
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-user-details',
   standalone: true,
@@ -30,10 +31,15 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private firestore: Firestore,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    this.loadUser();
+  }
+
+  async loadUser() {
     this.route.paramMap.subscribe(async (params) => {
       const userId = params.get('id');
       if (userId) {
@@ -51,9 +57,17 @@ export class UserDetailsComponent implements OnInit {
   editUserInfo() {
     const dialog = this.dialog.open(EditUserInfoComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.afterClosed().subscribe(() => {
+      this.loadUser();
+      this.cdr.detectChanges();
+    });
   }
   editUserAdress() {
     const dialog = this.dialog.open(EditUserAdressComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.afterClosed().subscribe(() => {
+      this.loadUser();
+      this.cdr.detectChanges();
+    });
   }
 }

@@ -47,7 +47,6 @@ export class EditUserAdressComponent {
 
   saveUser() {
     const userDoc = doc(this.firestore, 'user', this.user.id);
-    console.log(this.user);
     return updateDoc(userDoc, {
       ...this.user,
     });
