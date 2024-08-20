@@ -22,7 +22,6 @@ import {
 } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-edit-user-adress',
   standalone: true,
@@ -46,5 +45,11 @@ export class EditUserAdressComponent {
     private firestore: Firestore
   ) {}
 
-  saveUser() {}
+  saveUser() {
+    const userDoc = doc(this.firestore, 'user', this.user.id);
+    console.log(this.user);
+    return updateDoc(userDoc, {
+      ...this.user,
+    });
+  }
 }

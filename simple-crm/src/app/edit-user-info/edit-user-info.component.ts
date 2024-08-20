@@ -52,5 +52,13 @@ export class EditUserInfoComponent {
     private firestore: Firestore
   ) {}
 
-  saveUser() {}
+  saveUser() {
+    const userDoc = doc(this.firestore, 'user', this.user.id);
+    return updateDoc(userDoc, { id: this.user.id,
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      birthDate: this.user.birthDate
+     });
+  }
+  
 }
