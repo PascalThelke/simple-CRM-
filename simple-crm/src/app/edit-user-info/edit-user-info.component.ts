@@ -58,7 +58,8 @@ export class EditUserInfoComponent {
     return updateDoc(userDoc, { id: this.user.id,
       firstName: this.user.firstName,
       lastName: this.user.lastName,
-      birthDate: this.user.birthDate
+      birthDate: this.user.birthDate,
+      email: this.user.email
      });
   }
   
