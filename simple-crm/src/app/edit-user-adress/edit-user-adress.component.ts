@@ -40,6 +40,7 @@ import { CommonModule } from '@angular/common';
 export class EditUserAdressComponent {
   user!: User;
   loading = false;
+  
   constructor(
     public dialogRef: MatDialogRef<EditUserAdressComponent>,
     private firestore: Firestore

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute } from '@angular/router';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
@@ -10,7 +10,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserAdressComponent } from '../edit-user-adress/edit-user-adress.component';
 import { EditUserInfoComponent } from '../edit-user-info/edit-user-info.component';
-import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-user-details',
   standalone: true,

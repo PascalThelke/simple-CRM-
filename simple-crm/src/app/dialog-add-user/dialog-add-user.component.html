@@ -4,26 +4,26 @@
     <div>
         <mat-form-field class="pt_8 mr_16" appearance="outline">
             <mat-label>Frist Name</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="">
+            <input [attr.aria-disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="">
             <!-- <mat-hint>Please enter a Name</mat-hint> -->
         </mat-form-field>
         <mat-form-field class="pt_8" appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="">
+            <input [attr.aria-disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="">
             <!-- <mat-hint>Please enter a Name</mat-hint> -->
         </mat-form-field>
     </div>
     <div>
         <mat-form-field class="pt_8 full_width" appearance="outline">
             <mat-label>Email</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="">
+            <input [attr.aria-disabled]="loading" [(ngModel)]="user.email" matInput placeholder="">
             <!-- <mat-hint>Please enter a Name</mat-hint> -->
         </mat-form-field>
     </div>
     <div>
         <mat-form-field class="pt_8 full_width" appearance="outline">
             <mat-label>Birthdate</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.birthDate" matInput [matDatepicker]="picker">
+            <input [attr.aria-disabled]="loading" [(ngModel)]="user.birthDate" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker [calendarHeaderComponent]="exampleHeader"></mat-datepicker>
         </mat-form-field>
@@ -31,25 +31,25 @@
     <div>
         <mat-form-field class="pt_8 full_width" appearance="outline">
             <mat-label>Street + Number</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.street" matInput placeholder="">
+            <input [attr.aria-disabled]="loading" [(ngModel)]="user.street" matInput placeholder="">
             <!-- <mat-hint>Please enter a Name</mat-hint> -->
         </mat-form-field>
     </div>
     <div>
         <mat-form-field class="pt_8 mr_16" appearance="outline">
             <mat-label>Postal code</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.postalCode" matInput placeholder="">
+            <input [attr.aria-disabled]="loading" [(ngModel)]="user.postalCode" matInput placeholder="">
             <!-- <mat-hint>Please enter a Name</mat-hint> -->
         </mat-form-field>
         <mat-form-field class="pt_8" appearance="outline">
             <mat-label>City</mat-label>
-            <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="">
+            <input [attr.aria-disabled]="loading" [(ngModel)]="user.city" matInput placeholder="">
             <!-- <mat-hint>Please enter a Name</mat-hint> -->
         </mat-form-field>
     </div>
 
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>
-    <button [disabled]="loading" mat-button (click)="saveUser()" [mat-dialog-close]="" cdkFocusInitial>Save</button>
+    <button [attr.aria-disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>
+    <button [attr.aria-disabled]="loading" mat-button (click)="saveUser()" [mat-dialog-close]="" cdkFocusInitial>Save</button>
 </mat-dialog-actions>

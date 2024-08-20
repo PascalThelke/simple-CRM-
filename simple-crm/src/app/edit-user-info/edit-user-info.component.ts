@@ -47,6 +47,7 @@ export class EditUserInfoComponent {
   user!: User;
   loading = false;
   exampleHeader = ExampleHeader;
+  userUpdated: any;
   constructor(
     public dialogRef: MatDialogRef<EditUserInfoComponent>,
     private firestore: Firestore
