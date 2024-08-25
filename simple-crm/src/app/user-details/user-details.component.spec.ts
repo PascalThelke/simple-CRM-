@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserDetailsComponent } from './user-details.component';
+import { RouterModule } from '@angular/router';
+import { Firestore, FirestoreModule } from '@angular/fire/firestore';
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -8,7 +10,8 @@ describe('UserDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserDetailsComponent],
+      imports: [UserDetailsComponent, RouterModule.forRoot([]), FirestoreModule],
+      providers: []
     }).compileComponents();
 
     fixture = TestBed.createComponent(UserDetailsComponent);

@@ -1,5 +1,5 @@
 <mat-card *ngIf="user" class="profile_header" appearance='raised'>
-    <button class="menu_button_upperleft" [matMenuTriggerFor]="profileMenu" mat-icon-button>
+    <button [attr.aria-disabled]="!user" class="menu_button_upperright" [matMenuTriggerFor]="profileMenu" mat-icon-button>
         <mat-icon>more_vert</mat-icon>
         <mat-menu #profileMenu="matMenu">
             <button mat-menu-item (click)="editUserInfo()">
@@ -21,7 +21,7 @@
     </mat-card-content>
 </mat-card>
 <mat-card *ngIf="user" class="mt_16" appearance="outlined">
-    <button class="menu_button_upperleft" [matMenuTriggerFor]="adressMenu" mat-icon-button>
+    <button [attr.aria-disabled]="!user" class="menu_button_upperright" [matMenuTriggerFor]="adressMenu" mat-icon-button>
         <mat-icon>more_vert</mat-icon>
         <mat-menu #adressMenu="matMenu">
             <button mat-menu-item (click)="editUserAdress()">
