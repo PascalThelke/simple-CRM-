@@ -40,14 +40,17 @@ export class UserDetailsComponent implements OnInit {
 
   async loadUser() {
     this.route.paramMap.subscribe(async (params) => {
-      const userId = params.get('id');
+      // subscribing to changes in the route parameters
+      const userId = params.get('id'); // Extract the 'id' parameter from the route params
       if (userId) {
-        const userDocRef = doc(this.firestore, 'user', userId);
-        const userDoc = await getDoc(userDocRef);
-        if (userDoc.exists()) {
-          this.user = new User(userDoc.data());
+        // if the userID variable is set go next
+        const userDocRef = doc(this.firestore, 'user', userId); // Create a reference to the user document in Firestore
+        const userDoc = await getDoc(userDocRef); // Fetch the user document from Firestore
+        if (userDoc) {
+          // Check if the document exists
+          this.user = new User(userDoc.data()); // // Create a new User object using the retrieved data to save the real object from being changed directly while being edited later
         } else {
-          console.log('No such document!');
+          console.log(`User with ID "${userId}" not found.`); // Log an error message if the document doesn't exist
         }
       }
     });
@@ -61,7 +64,7 @@ export class UserDetailsComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
-  
+
   editUserAdress() {
     const dialog = this.dialog.open(EditUserAdressComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
