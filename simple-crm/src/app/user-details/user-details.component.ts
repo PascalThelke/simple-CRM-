@@ -61,6 +61,7 @@ export class UserDetailsComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
+  
   editUserAdress() {
     const dialog = this.dialog.open(EditUserAdressComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
